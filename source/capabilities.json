@@ -1,0 +1,391 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Hierarchy",
+            "description": "Add one to eight fields. They form the levels of the tree, in the order they appear here.",
+            "name": "hierarchy",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Value",
+            "description": "Optional measure summed for every node. Without a measure, each node shows its row count.",
+            "name": "value",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Details",
+            "description": "Optional fields shown in the details panel when you enter a node, such as position, email or location.",
+            "name": "details",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Tooltips",
+            "description": "Optional extra measures shown in the tooltip, summed for every node.",
+            "name": "tooltips",
+            "kind": "Measure"
+        }
+    ],
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "hierarchy": {
+                        "min": 1,
+                        "max": 8
+                    },
+                    "value": {
+                        "min": 0,
+                        "max": 1
+                    },
+                    "tooltips": {
+                        "min": 0,
+                        "max": 5
+                    },
+                    "details": {
+                        "min": 0,
+                        "max": 12
+                    }
+                }
+            ],
+            "table": {
+                "rows": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "hierarchy"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "value"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "details"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "tooltips"
+                            }
+                        }
+                    ],
+                    "dataReductionAlgorithm": {
+                        "window": {
+                            "count": 30000
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "objects": {
+        "title": {
+            "properties": {
+                "show": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "text": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "subtitle": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "fontColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "nodes": {
+            "properties": {
+                "fontColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fontSize": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "nodeWidth": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "nodeHeight": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "cornerRadius": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "showValues": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showLevelNames": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showShareBar": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showInitials": {
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
+        "colors": {
+            "properties": {
+                "rootColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "level1Color": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "level2Color": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "deeperColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "selectedColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "connectorColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "backgroundColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "layout": {
+            "properties": {
+                "orientation": {
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "horizontal",
+                                "displayName": "Horizontal (left to right)"
+                            },
+                            {
+                                "value": "vertical",
+                                "displayName": "Vertical (org chart)"
+                            }
+                        ]
+                    }
+                },
+                "collapsedBranches": {
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "auto",
+                                "displayName": "Automatic"
+                            },
+                            {
+                                "value": "compressed",
+                                "displayName": "Show as compressed bars"
+                            },
+                            {
+                                "value": "hidden",
+                                "displayName": "Hide until entered"
+                            }
+                        ]
+                    }
+                },
+                "connectorStyle": {
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "auto",
+                                "displayName": "Automatic"
+                            },
+                            {
+                                "value": "curved",
+                                "displayName": "Curved"
+                            },
+                            {
+                                "value": "elbow",
+                                "displayName": "Elbow"
+                            }
+                        ]
+                    }
+                },
+                "levelSpacing": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "siblingSpacing": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "overviewLevels": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "animationDuration": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "showLevelHeaders": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showBreadcrumb": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showZoomControls": {
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
+        "interaction": {
+            "properties": {
+                "crossFilter": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "dimOpacity": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "canvasNavigation": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "respectReducedMotion": {
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
+        "details": {
+            "properties": {
+                "show": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "panelWidth": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "showAvatar": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showChildren": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showInTooltip": {
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        }
+    },
+    "supportsHighlight": false,
+    "supportsKeyboardFocus": true,
+    "supportsLandingPage": true,
+    "supportsMultiVisualSelection": true,
+    "suppressDefaultTitle": false,
+    "privileges": [],
+    "tooltips": {
+        "supportedTypes": {
+            "default": true,
+            "canvas": true
+        },
+        "roles": [
+            "tooltips"
+        ]
+    },
+    "supportsEmptyDataView": true
+}

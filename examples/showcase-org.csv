@@ -1,0 +1,66 @@
+Department,Team,Person,Position,Email,Location,Start date,FTE
+Executive Office,Leadership,Cleo Selstead,Chief Executive Officer,cleo.selstead@example.com,Aarhus,2012-01-27,0.8
+Executive Office,Leadership,Vida Wrenmore,Executive Assistant,vida.wrenmore@example.com,Amsterdam,2024-09-09,1.0
+Executive Office,Leadership,Rafi Kestridge,Chief Financial Officer,rafi.kestridge@example.com,Amsterdam,2020-12-17,0.6
+Executive Office,Leadership,Eli Dunby,Executive Assistant,eli.dunby@example.com,Stockholm,2019-06-25,1.0
+Product & Engineering,Platform,Sami Ravengard,Engineering Manager,sami.ravengard@example.com,Oslo,2020-09-26,1.0
+Product & Engineering,Platform,Pia Iverbrook,Site Reliability Engineer,pia.iverbrook@example.com,Aarhus,2017-08-20,1.0
+Product & Engineering,Platform,Dina Vellby,Site Reliability Engineer,dina.vellby@example.com,Oslo,2022-11-03,0.5
+Product & Engineering,Platform,Teo Vellwick,Software Engineer,teo.vellwick@example.com,Stockholm,2017-02-19,1.0
+Product & Engineering,Platform,Ari Wrenbrook,Software Engineer,ari.wrenbrook@example.com,Oslo,2017-05-01,0.6
+Product & Engineering,Platform,Zoe Umberridge,Site Reliability Engineer,zoe.umberridge@example.com,Oslo,2017-01-31,1.0
+Product & Engineering,Platform,Kian Thornmore,Senior Software Engineer,kian.thornmore@example.com,Aarhus,2026-06-08,1.0
+Product & Engineering,Data & Insights,Vida Vellwick,Head of Data,vida.vellwick@example.com,Copenhagen,2012-10-17,1.0
+Product & Engineering,Data & Insights,Lio Thornmore,Data Engineer,lio.thornmore@example.com,Copenhagen,2017-12-13,1.0
+Product & Engineering,Data & Insights,Nico Dunmore,Analytics Engineer,nico.dunmore@example.com,Copenhagen,2021-09-27,1.0
+Product & Engineering,Data & Insights,Teo Oakmere,Analytics Engineer,teo.oakmere@example.com,Copenhagen,2024-02-24,1.0
+Product & Engineering,Data & Insights,Ari Ravenvale,Analytics Engineer,ari.ravenvale@example.com,Copenhagen,2019-08-03,1.0
+Product & Engineering,Data & Insights,Fen Wrenby,Data Analyst,fen.wrenby@example.com,Copenhagen,2016-01-30,1.0
+Product & Engineering,Product Design,Aksel Quilgard,Design Lead,aksel.quilgard@example.com,Stockholm,2024-12-12,1.0
+Product & Engineering,Product Design,Rafi Ravenmere,UX Researcher,rafi.ravenmere@example.com,Stockholm,2020-06-02,1.0
+Product & Engineering,Product Design,Dag Everholt,Product Designer,dag.everholt@example.com,Stockholm,2022-05-18,1.0
+Product & Engineering,Product Design,Pia Selfall,Product Designer,pia.selfall@example.com,Stockholm,2016-09-14,0.6
+Product & Engineering,Quality,Bea Norridge,QA Lead,bea.norridge@example.com,Oslo,2022-09-27,0.6
+Product & Engineering,Quality,Noor Calholt,Test Engineer,noor.calholt@example.com,Stockholm,2023-05-03,1.0
+Product & Engineering,Quality,Cleo Dunfall,Automation Engineer,cleo.dunfall@example.com,Oslo,2020-03-30,1.0
+Product & Engineering,Quality,Ivo Vellmere,Automation Engineer,ivo.vellmere@example.com,Oslo,2023-02-08,1.0
+Customer & Sales,Nordics,Teo Dunridge,Sales Director Nordics,teo.dunridge@example.com,Aarhus,2023-08-18,1.0
+Customer & Sales,Nordics,Kian Umbervale,Account Executive,kian.umbervale@example.com,Aarhus,2023-02-27,1.0
+Customer & Sales,Nordics,Teo Brindell,Account Executive,teo.brindell@example.com,Aarhus,2026-05-26,1.0
+Customer & Sales,Nordics,Jun Calmere,Account Executive,jun.calmere@example.com,Oslo,2017-10-05,1.0
+Customer & Sales,Nordics,Astrid Seldell,Sales Engineer,astrid.seldell@example.com,Aarhus,2019-07-03,1.0
+Customer & Sales,DACH & Benelux,Lumi Wrenby,Sales Director Central Europe,lumi.wrenby@example.com,Oslo,2013-09-07,1.0
+Customer & Sales,DACH & Benelux,Astrid Evermore,Partner Manager,astrid.evermore@example.com,Oslo,2019-06-28,1.0
+Customer & Sales,DACH & Benelux,Otto Dunby,Partner Manager,otto.dunby@example.com,Oslo,2023-05-29,1.0
+Customer & Sales,DACH & Benelux,Eli Kestvale,Partner Manager,eli.kestvale@example.com,Oslo,2018-02-06,1.0
+Customer & Sales,DACH & Benelux,Freya Larkmere,Account Executive,freya.larkmere@example.com,Berlin,2017-07-08,1.0
+Customer & Sales,Customer Success,Nell Calfall,Head of Customer Success,nell.calfall@example.com,Oslo,2012-09-09,1.0
+Customer & Sales,Customer Success,Otto Umberridge,Support Specialist,otto.umberridge@example.com,Amsterdam,2017-11-23,1.0
+Customer & Sales,Customer Success,Saga Larkgard,Support Specialist,saga.larkgard@example.com,Aarhus,2019-12-20,1.0
+Customer & Sales,Customer Success,Noor Vellbrook,Customer Success Manager,noor.vellbrook@example.com,Copenhagen,2018-09-14,0.6
+Customer & Sales,Customer Success,Nell Quildell,Customer Success Manager,nell.quildell@example.com,Copenhagen,2017-06-24,0.6
+Customer & Sales,Customer Success,Mads Oakbrook,Support Specialist,mads.oakbrook@example.com,Oslo,2020-11-28,0.5
+Operations,Supply Chain,Vik Wrenholt,Supply Chain Manager,vik.wrenholt@example.com,Stockholm,2022-01-01,1.0
+Operations,Supply Chain,Wren Vellmore,Buyer,wren.vellmore@example.com,Stockholm,2018-09-12,1.0
+Operations,Supply Chain,Bea Quilby,Planner,bea.quilby@example.com,Stockholm,2021-02-12,0.6
+Operations,Supply Chain,Mads Norstead,Logistics Coordinator,mads.norstead@example.com,Aarhus,2020-09-19,1.0
+Operations,Supply Chain,Una Ravenmere,Logistics Coordinator,una.ravenmere@example.com,Stockholm,2016-09-04,1.0
+Operations,Manufacturing,Zoe Galbrook,Plant Manager,zoe.galbrook@example.com,Copenhagen,2020-07-10,1.0
+Operations,Manufacturing,Freya Galmere,Technician,freya.galmere@example.com,Copenhagen,2022-04-29,1.0
+Operations,Manufacturing,Kian Ashbrook,Technician,kian.ashbrook@example.com,Copenhagen,2025-05-12,1.0
+Operations,Manufacturing,Maren Bringard,Production Engineer,maren.bringard@example.com,Copenhagen,2024-06-22,1.0
+Operations,Manufacturing,Pia Hollovale,Shift Lead,pia.hollovale@example.com,Copenhagen,2019-09-16,1.0
+Operations,Manufacturing,Alba Umbervale,Production Engineer,alba.umbervale@example.com,Copenhagen,2022-07-01,1.0
+Operations,Manufacturing,Zeno Hollostead,Production Engineer,zeno.hollostead@example.com,Stockholm,2022-07-24,1.0
+People & Finance,People,Eli Oakwick,Head of People,eli.oakwick@example.com,Aarhus,2023-04-06,1.0
+People & Finance,People,Ivo Galridge,Learning Specialist,ivo.galridge@example.com,Aarhus,2020-01-06,1.0
+People & Finance,People,Bea Vellby,Learning Specialist,bea.vellby@example.com,Aarhus,2016-09-08,1.0
+People & Finance,People,Elin Dunbrook,Recruiter,elin.dunbrook@example.com,Copenhagen,2020-01-07,1.0
+People & Finance,Finance,Yara Iverby,Finance Manager,yara.iverby@example.com,Berlin,2013-07-10,1.0
+People & Finance,Finance,Eli Vellstead,FP&A Analyst,eli.vellstead@example.com,Berlin,2019-05-15,1.0
+People & Finance,Finance,Pia Pelldell,Accountant,pia.pelldell@example.com,Amsterdam,2018-10-03,1.0
+People & Finance,Finance,Saga Ashfall,FP&A Analyst,saga.ashfall@example.com,Remote,2019-07-14,1.0
+People & Finance,Finance,Zoe Larkby,Controller,zoe.larkby@example.com,Stockholm,2022-06-07,1.0
+People & Finance,IT,Lio Galstead,IT Manager,lio.galstead@example.com,Amsterdam,2014-09-26,1.0
+People & Finance,IT,Benji Oakstead,Service Desk Analyst,benji.oakstead@example.com,Amsterdam,2018-01-28,1.0
+People & Finance,IT,Elin Nordell,Systems Administrator,elin.nordell@example.com,Berlin,2022-10-21,1.0

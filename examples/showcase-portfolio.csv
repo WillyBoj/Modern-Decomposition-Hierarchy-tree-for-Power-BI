@@ -1,0 +1,33 @@
+Program,Vendor,Application,Licences,Annual cost
+Program Alder,Quarry Tech,DocVault,5,5900
+Program Alder,Saltmarsh Security,Threat Watch,120,83300
+Program Alder,Saltmarsh Security,Identity Gate,15,18200
+Program Alder,Kestrel Software,Kestrel CRM,40,31700
+Program Alder,Kestrel Software,Kestrel Field,80,81000
+Program Alder,Orbis Systems,Orbis Payroll,120,72100
+Program Birch,Saltmarsh Security,Identity Gate,5,3700
+Program Birch,Saltmarsh Security,Threat Watch,15,18500
+Program Birch,Bluefin Cloud,Bluefin Storage,60,68100
+Program Birch,Northbeam Data,Capture Suite,15,20800
+Program Birch,Northbeam Data,Northbeam Analytics,80,101800
+Program Cedar,Orbis Systems,Orbis ERP,80,115500
+Program Cedar,Orbis Systems,Orbis Payroll,40,53700
+Program Cedar,Kestrel Software,Kestrel Field,120,108700
+Program Cedar,Bluefin Cloud,Bluefin Backup,15,20800
+Program Cedar,Bluefin Cloud,Bluefin Storage,10,6300
+Program Dune,Larchwood Labs,Sample Tracker,60,50300
+Program Dune,Larchwood Labs,Lab Hub,60,71100
+Program Dune,Orbis Systems,Orbis Payroll,40,59800
+Program Dune,Orbis Systems,Orbis ERP,80,101200
+Program Dune,Saltmarsh Security,Threat Watch,15,17500
+Program Dune,Northbeam Data,Capture Suite,25,38300
+Program Dune,Northbeam Data,Northbeam Analytics,10,13400
+Program Elm,Larchwood Labs,Lab Hub,5,4100
+Program Elm,Larchwood Labs,Sample Tracker,40,28500
+Program Elm,Saltmarsh Security,Threat Watch,80,87500
+Program Elm,Kestrel Software,Kestrel Field,5,6100
+Program Elm,Kestrel Software,Kestrel CRM,15,11300
+Program Elm,Bluefin Cloud,Bluefin Storage,40,54900
+Program Elm,Bluefin Cloud,Bluefin Backup,15,21100
+Program Dune,,Shared Wiki,30,4200
+Program Elm,Quarry Tech,eSign Pilot,5,0

@@ -1,0 +1,849 @@
+// Hierarchy Explorer – styles
+// Colors arrive as CSS custom properties set from the format pane. Node states are
+// driven by classes so the browser can restyle without touching thousands of attributes.
+
+.he-root {
+    --he-bg: #F4F6F9;
+    --he-text: #1D2433;
+    --he-muted: #6B7385;
+    --he-title: #1D2433;
+    --he-card: #FFFFFF;
+    --he-hairline: #E1E5EC;
+    --he-selected: #F0A23B;
+    --he-connector: #C3CAD5;
+    --he-connector-strong: #848A91;
+    --he-dim-opacity: 0.3;
+    --he-font: "Segoe UI", wf_segoe-ui_normal, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --he-shadow: rgba(16, 24, 40, 0.07);
+    --he-shadow-strong: rgba(16, 24, 40, 0.14);
+
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: var(--he-font);
+    color: var(--he-text);
+    background-color: var(--he-bg);
+    // A faint dot grid gives the canvas depth and makes panning legible.
+    background-image: radial-gradient(rgba(29, 36, 51, 0.09) 1px, transparent 1.3px);
+    background-size: 18px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-font-smoothing: antialiased;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+}
+
+.he-high-contrast {
+    --he-shadow: transparent;
+    --he-shadow-strong: transparent;
+    background-image: none;
+}
+
+// ---------------------------------------------------------------- header
+
+.he-header {
+    flex: 0 0 auto;
+    padding: 12px 16px 0;
+    min-width: 0;
+}
+
+.he-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--he-title);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.he-subtitle {
+    margin-top: 1px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--he-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.he-high-contrast .he-subtitle {
+    color: var(--he-title);
+}
+
+// ---------------------------------------------------------------- toolbar
+
+.he-toolbar {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px 4px 12px;
+    min-width: 0;
+}
+
+.he-breadcrumb {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.he-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.he-crumb {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    flex: 0 1 auto;
+
+    & + .he-crumb::before {
+        content: "";
+        flex: 0 0 auto;
+        width: 5px;
+        height: 5px;
+        margin: 0 6px 0 4px;
+        border-top: 1.5px solid var(--he-muted);
+        border-right: 1.5px solid var(--he-muted);
+        transform: rotate(45deg);
+        opacity: 0.6;
+    }
+}
+
+.he-crumb-button,
+.he-crumb-current {
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font: inherit;
+    line-height: 20px;
+    padding: 0 6px;
+    border-radius: 6px;
+}
+
+.he-crumb-button {
+    border: 0;
+    background: transparent;
+    color: var(--he-muted);
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease;
+
+    &:hover {
+        background: rgba(29, 36, 51, 0.06);
+        color: var(--he-text);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--he-selected);
+        outline-offset: 1px;
+    }
+}
+
+.he-crumb-current {
+    color: var(--he-text);
+    font-weight: 600;
+}
+
+.he-icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.he-overview {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 26px;
+    padding: 0 10px 0 8px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--he-text);
+    background: var(--he-card);
+    border: 1px solid var(--he-hairline);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px var(--he-shadow);
+    transition: border-color 120ms ease, opacity 120ms ease;
+
+    &:hover:not(:disabled) {
+        border-color: var(--he-connector);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--he-selected);
+        outline-offset: 1px;
+    }
+
+    &:disabled {
+        opacity: 0.45;
+        cursor: default;
+        box-shadow: none;
+    }
+}
+
+// ---------------------------------------------------------------- stage
+
+.he-stage {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.he-canvas {
+    position: relative;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+    // Keep style and layout work for large trees inside the canvas.
+    contain: strict;
+}
+
+.he-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    cursor: default;
+    touch-action: none;
+    outline: none;
+
+    &.he-panning {
+        cursor: grabbing;
+    }
+}
+
+.he-message {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--he-muted);
+}
+
+// ---------------------------------------------------------------- level headers
+
+.he-level-headers {
+    position: relative;
+    flex: 0 0 24px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.he-level-header {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 18px;
+    padding-left: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--he-muted);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.he-level-swatch {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+}
+
+.he-level-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Vertical: a rail on the left of the canvas, one label per level row.
+.he-vertical .he-level-headers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 96px;
+    z-index: 1;
+}
+
+// Each level label is a small chip, so cards passing behind the rail stay visible.
+.he-vertical .he-level-header {
+    top: 0;
+    left: 10px;
+    max-width: 84px;
+    height: 22px;
+    margin-top: -11px;
+    padding: 0 8px 0 6px;
+    border-radius: 11px;
+    background: var(--he-card);
+    border: 1px solid var(--he-hairline);
+    box-shadow: 0 1px 2px var(--he-shadow);
+}
+
+// ---------------------------------------------------------------- zoom controls
+
+.he-zoom {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    background: var(--he-card);
+    border: 1px solid var(--he-hairline);
+    border-radius: 10px;
+    box-shadow: 0 1px 2px var(--he-shadow), 0 6px 16px var(--he-shadow);
+    overflow: hidden;
+}
+
+.he-zoom-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--he-muted);
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease;
+
+    & + .he-zoom-button {
+        border-top: 1px solid var(--he-hairline);
+    }
+
+    &:hover {
+        background: rgba(29, 36, 51, 0.05);
+        color: var(--he-text);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--he-selected);
+        outline-offset: -2px;
+    }
+}
+
+// ---------------------------------------------------------------- details panel
+
+.he-panel {
+    --he-panel-width: 300px;
+    --he-panel-height: 260px;
+
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 3;
+    width: var(--he-panel-width);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 16px 16px 12px;
+    background: var(--he-card);
+    border: 1px solid var(--he-hairline);
+    border-radius: 14px;
+    box-shadow: 0 2px 4px var(--he-shadow), 0 12px 32px var(--he-shadow);
+    user-select: text;
+    -webkit-user-select: text;
+    transform: translateX(calc(100% + 24px));
+    visibility: hidden;
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 320ms;
+}
+
+.he-panel-open .he-panel {
+    transform: none;
+    visibility: visible;
+    transition: transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
+}
+
+// Narrow visuals: the panel rises from the bottom instead.
+.he-panel-bottom .he-panel {
+    top: auto;
+    left: 12px;
+    width: auto;
+    height: var(--he-panel-height);
+}
+
+.he-panel-bottom:not(.he-panel-open) .he-panel {
+    transform: translateY(calc(100% + 24px));
+}
+
+.he-panel-open.he-panel-right .he-zoom {
+    right: calc(var(--he-panel-width) + 24px);
+}
+
+.he-panel-open.he-panel-bottom .he-zoom {
+    bottom: calc(var(--he-panel-height) + 24px);
+}
+
+.he-zoom {
+    transition: right 380ms cubic-bezier(0.2, 0.8, 0.2, 1), bottom 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.he-panel-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+}
+
+.he-panel-avatar {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+}
+
+.he-panel-titles {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-top: 2px;
+}
+
+.he-panel-name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--he-text);
+    overflow-wrap: anywhere;
+}
+
+.he-panel-level {
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--he-muted);
+}
+
+.he-panel-path {
+    margin-top: 2px;
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--he-muted);
+    overflow-wrap: anywhere;
+}
+
+.he-panel-close {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: -4px -6px 0 0;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--he-muted);
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(29, 36, 51, 0.06);
+        color: var(--he-text);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--he-selected);
+        outline-offset: 0;
+    }
+}
+
+.he-panel-figures,
+.he-panel-details {
+    margin: 0;
+}
+
+.he-panel-figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px 16px;
+    margin-top: 16px;
+    padding: 12px 0;
+    border-top: 1px solid var(--he-hairline);
+    border-bottom: 1px solid var(--he-hairline);
+
+    dt {
+        font-size: 11px;
+        color: var(--he-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    dd {
+        margin: 2px 0 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--he-text);
+        font-variant-numeric: tabular-nums;
+        overflow-wrap: anywhere;
+    }
+}
+
+.he-panel-section {
+    margin-top: 14px;
+}
+
+.he-panel-heading {
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--he-text);
+}
+
+.he-panel-detail {
+    display: grid;
+    grid-template-columns: minmax(72px, 30%) 1fr;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 12px;
+    line-height: 1.4;
+
+    & + .he-panel-detail {
+        border-top: 1px solid var(--he-hairline);
+    }
+
+    dt {
+        color: var(--he-muted);
+        overflow-wrap: anywhere;
+    }
+
+    dd {
+        margin: 0;
+        color: var(--he-text);
+        overflow-wrap: anywhere;
+    }
+
+    .he-panel-muted {
+        color: var(--he-muted);
+        font-style: italic;
+    }
+}
+
+.he-panel-link {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: var(--he-level-link, #2B5CC8);
+    text-align: left;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+.he-panel-children {
+    list-style: none;
+    margin: 0 -6px;
+    padding: 0;
+}
+
+.he-panel-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 30px;
+    padding: 4px 6px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    font: inherit;
+    font-size: 12px;
+    color: var(--he-text);
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(29, 36, 51, 0.05);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--he-selected);
+        outline-offset: -2px;
+    }
+}
+
+.he-panel-child-dot {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.he-panel-child-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.he-panel-child-value {
+    flex: 0 0 auto;
+    color: var(--he-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.he-panel-more {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--he-muted);
+}
+
+.he-high-contrast {
+    .he-panel {
+        border-color: var(--he-text);
+    }
+
+    .he-panel-avatar {
+        color: var(--he-bg);
+    }
+
+    .he-panel-link {
+        color: var(--he-text);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .he-panel,
+    .he-zoom {
+        transition: none;
+    }
+}
+
+// ---------------------------------------------------------------- connectors
+
+.he-link {
+    fill: none;
+    stroke: var(--he-connector);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: opacity 260ms ease, stroke 260ms ease;
+
+    &.he-link-active {
+        stroke: var(--he-connector-strong);
+        stroke-width: 1.75;
+    }
+}
+
+// ---------------------------------------------------------------- nodes
+
+.he-node {
+    cursor: pointer;
+    outline: none;
+    transition: opacity 260ms ease;
+
+    .he-shadow {
+        fill: var(--he-shadow);
+        transition: fill 200ms ease;
+    }
+
+    .he-card {
+        stroke: var(--he-hairline);
+        stroke-width: 1;
+        transition: stroke 160ms ease;
+    }
+
+    &:not(.he-compact) .he-card {
+        fill: var(--he-card);
+    }
+
+    .he-ring {
+        fill: none;
+        stroke: var(--he-selected);
+        stroke-width: 2;
+        stroke-dasharray: 4 3;
+        opacity: 0;
+    }
+
+    .he-name {
+        fill: var(--he-text);
+    }
+
+    .he-initials {
+        fill: #FFFFFF;
+        pointer-events: none;
+    }
+
+    .he-level {
+        fill: var(--he-muted);
+    }
+
+    .he-value {
+        fill: var(--he-text);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .he-track {
+        fill: var(--he-hairline);
+        opacity: 0.7;
+    }
+
+    text {
+        pointer-events: none;
+    }
+
+    &:hover:not(.he-compact) .he-card {
+        stroke: var(--he-connector);
+    }
+
+    &:focus-visible .he-ring {
+        opacity: 1;
+    }
+}
+
+// The node you have entered, and the path that leads to it.
+.he-node.he-focused {
+    .he-card,
+    &:hover .he-card {
+        stroke: var(--he-selected);
+        stroke-width: 2;
+    }
+
+    .he-shadow {
+        fill: var(--he-shadow-strong);
+    }
+}
+
+.he-node.he-on-path .he-card {
+    stroke: var(--he-connector);
+}
+
+// Compressed bars: no labels, no shadow, tinted with the level color.
+.he-compact {
+    .he-shadow,
+    .he-badge,
+    .he-initials-bg,
+    text,
+    .he-track,
+    .he-bar,
+    .he-level-dot {
+        display: none;
+    }
+
+    .he-card {
+        stroke: none;
+    }
+
+    &:hover .he-card {
+        stroke: var(--he-connector);
+        stroke-width: 1;
+    }
+}
+
+// Child count badge on the outgoing edge: a dot when the branch is open,
+// a pill with the number of children when it can be entered.
+.he-badge {
+    .he-badge-dot {
+        fill: var(--he-card);
+        stroke: var(--he-connector-strong);
+        stroke-width: 1.25;
+    }
+
+    .he-badge-pill,
+    .he-badge-text {
+        display: none;
+    }
+
+    .he-badge-pill {
+        fill: var(--he-card);
+        stroke: var(--he-hairline);
+        stroke-width: 1;
+    }
+
+    .he-badge-text {
+        fill: var(--he-muted);
+        font: 600 10px var(--he-font);
+        font-variant-numeric: tabular-nums;
+    }
+
+    &.he-collapsed {
+        .he-badge-dot {
+            display: none;
+        }
+
+        .he-badge-pill,
+        .he-badge-text {
+            display: inline;
+        }
+    }
+}
+
+.he-node:hover .he-badge.he-collapsed .he-badge-pill {
+    stroke: var(--he-connector-strong);
+}
+
+.he-hidden {
+    display: none;
+}
+
+.he-dim {
+    opacity: var(--he-dim-opacity);
+}
+
+.he-high-contrast {
+    .he-node .he-card {
+        stroke-width: 1.5;
+    }
+
+    .he-dim {
+        opacity: ~"max(var(--he-dim-opacity), 0.5)";
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .he-node,
+    .he-link,
+    .he-node .he-card,
+    .he-node .he-shadow {
+        transition: none;
+    }
+}

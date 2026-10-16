@@ -1,0 +1,32 @@
+{
+  "name": "hierarchy-explorer-powerbi",
+  "description": "Hierarchy Explorer: an interactive hierarchy and org chart visual for Microsoft Power BI.",
+  "version": "1.2.1",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "pbiviz": "pbiviz",
+    "start": "pbiviz start",
+    "package": "pbiviz package",
+    "audit:cert": "pbiviz package --certification-audit",
+    "eslint": "eslint .",
+    "test:unit": "tsc --outDir .tmp/unit --module commonjs --target es2022 --skipLibCheck --strict src/tree.ts src/layout.ts src/details.ts && node test/tree-layout.test.js && node test/details.test.js",
+    "test": "npm run eslint && npm run test:unit",
+    "showcase": "python3 tools/generate_showcase.py"
+  },
+  "dependencies": {
+    "powerbi-visuals-api": "5.11.1",
+    "powerbi-visuals-utils-formattingmodel": "7.1.0"
+  },
+  "devDependencies": {
+    "eslint": "10.13.0",
+    "eslint-plugin-powerbi-visuals": "1.1.1",
+    "powerbi-visuals-tools": "7.2.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.2"
+  },
+  "overrides": {
+    "uuid": "11.1.1"
+  },
+  "author": "William Bøjstrup"
+}

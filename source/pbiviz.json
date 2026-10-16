@@ -1,0 +1,26 @@
+{
+  "visual": {
+    "name": "hierarchyExplorer",
+    "displayName": "Hierarchy Explorer",
+    "guid": "hierarchyExplorerDC8BE04EF90E4D1F86EBFB7D0162D194",
+    "visualClassName": "Visual",
+    "version": "1.2.1.0",
+    "description": "Interactive hierarchy and org chart. Lay it out left to right or top-down, click a node to zoom in and open its branch, and see its details (position, email, location or any field you add) in a side panel. Up to eight levels, share-of-parent bars, breadcrumbs, cross-filtering, native tooltips and keyboard navigation.",
+    "supportUrl": "https://github.com/YOUR-GITHUB-USERNAME/hierarchy-explorer-powerbi/issues",
+    "gitHubUrl": "https://github.com/YOUR-GITHUB-USERNAME/hierarchy-explorer-powerbi"
+  },
+  "apiVersion": "5.11.1",
+  "author": {
+    "name": "William Bøjstrup",
+    "email": "noreply@example.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": null,
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": [],
+  "version": "1.2.1.0"
+}
